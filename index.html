@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;900&display=swap" rel="stylesheet">
+    <title>Cronometro</title>
+</head>
+
+<body>
+
+    <main>
+        <h1 class="title">Cronômetro.js</h1>
+
+        <div class="timer">
+            <div class="hours-content">
+                <p class="hours-title">Horas</p>
+                <div class="hours" id="hours">00</div>
+            </div>
+            <div class="separator">:</div>
+            <div class="minutes-content">
+                <p class="minutes-title">Minutos</p>
+                <div class="minutes" id="minutes">00</div>
+            </div>
+            <div class="separator">:</div>
+            <div class="seconds-content">
+                <p class="seconds-title">Segundos</p>
+                <div class="seconds" id="seconds">00</div>
+            </div>
+            <div class="separator">:</div>
+            <div class="miliseconds-content">
+                <p class="miliseconds-title">Milissegundos</p>
+                <div class="miliseconds" id="miliseconds">000</div>
+            </div>
+
+        </div>
+        <div class="buttons">
+            <button class="btn" id="startBtn">Iniciar</button>
+            <button class="btn" id="pauseBtn">Pausar</button>
+            <button class="btn" id="resumeBtn">Continuar</button>
+            <button class="btn" id="restartBtn">Reiniciar</button>
+        </div>
+    </main>
+    <script src="./src/script/script.js" defer></script>
+</body>
+
+</html>
