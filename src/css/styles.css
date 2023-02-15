@@ -9,6 +9,7 @@ main {
   align-items: center;
   flex-direction: column;
   font-family: "Orbitron", sans-serif;
+  background: #b7d1da;
 }
 
 .timer > div {
@@ -25,9 +26,12 @@ main {
   animation: stretch 2s infinite alternate;
 }
 .title {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 5rem;
+  font-weight: 500;
+  color: #02a9ea;
 }
+
 .timer {
   display: flex;
   margin-bottom: 3rem;
@@ -44,10 +48,51 @@ main {
   font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
+  margin: 0 1rem;
 }
 
 #pauseBtn,
 #resumeBtn,
 #restartBtn {
   display: none;
+}
+
+#startBtn {
+  background: #3993dd;
+  color: white;
+  scale: 1;
+  transition: ease-in-out 0.3s;
+}
+#startBtn:hover {
+  background: #56cbf9;
+  scale: 1.1;
+}
+#pauseBtn {
+  background: #db3a34;
+  color: white;
+  scale: 1;
+  transition: ease-in-out 0.3s;
+}
+#pauseBtn:hover {
+  scale: 1.1;
+}
+#restartBtn {
+  background: #7ea16b;
+  color: white;
+  scale: 1;
+  transition: ease-in-out 0.3s;
+}
+#restartBtn:hover {
+  scale: 1.1;
+}
+
+#resumeBtn {
+  background: #f283b6;
+  color: white;
+  scale: 1;
+  transition: ease-in-out 0.3s;
+}
+
+#resumeBtn:hover {
+  scale: 1.1;
 }

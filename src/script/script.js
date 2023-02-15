@@ -13,42 +13,57 @@ let miliseconds = 0;
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
+let interval;
+let startTime;
 
 startBtn.addEventListener("click", startCounter);
 pauseBtn.addEventListener("click", pauseCounter);
 resumeBtn.addEventListener("click", resumeCounter);
 restartBtn.addEventListener("click", restartCounter);
 
+// Recupera valores do cronômetro do sessionStorage quando a página é carregada
+if (sessionStorage.getItem("startTime")) {
+  startTime = new Date(sessionStorage.getItem("startTime"));
+  miliseconds = Number(sessionStorage.getItem("miliseconds"));
+  seconds = Number(sessionStorage.getItem("seconds"));
+  minutes = Number(sessionStorage.getItem("minutes"));
+  hours = Number(sessionStorage.getItem("hours"));
+  updateClock();
+}
+
 function startCounter() {
   startBtn.style.display = "none";
   pauseBtn.style.display = "inline-block";
   restartBtn.style.display = "inline-block";
 
+  startTime = new Date();
+
   interval = setInterval(() => {
     if (!isPaused) {
-      miliseconds += 10;
+      const now = new Date();
+      const elapsedTime = now.getTime() - startTime.getTime();
+      miliseconds = Math.floor((elapsedTime % 1000) / 10);
+      seconds = Math.floor((elapsedTime / 1000) % 60);
+      minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+      hours = Math.floor(elapsedTime / (1000 * 60 * 60));
 
-      if (miliseconds === 1000) {
-        seconds++;
-        miliseconds = 0;
-      }
+      updateClock();
 
-      if (seconds === 60) {
-        minutes++;
-        seconds = 0;
-      }
-
-      if (minutes === 60) {
-        hours++;
-        minutes = 0;
-      }
-
-      hoursEl.textContent = formatTime(hours);
-      minutesEl.textContent = formatTime(minutes);
-      secondsEl.textContent = formatTime(seconds);
-      milisecondsEl.textContent = formatMiliseconds(miliseconds);
+      // Armazena valores do cronômetro no sessionStorage
+      sessionStorage.setItem("startTime", startTime);
+      sessionStorage.setItem("miliseconds", miliseconds);
+      sessionStorage.setItem("seconds", seconds);
+      sessionStorage.setItem("minutes", minutes);
+      sessionStorage.setItem("hours", hours);
     }
   }, 10);
+}
+
+function updateClock() {
+  hoursEl.textContent = formatTime(hours);
+  minutesEl.textContent = formatTime(minutes);
+  secondsEl.textContent = formatTime(seconds);
+  milisecondsEl.textContent = formatMiliseconds(miliseconds);
 }
 
 function formatTime(time) {
@@ -63,6 +78,13 @@ function pauseCounter() {
   isPaused = true;
   resumeBtn.style.display = "inline-block";
   pauseBtn.style.display = "none";
+
+  // remove os dados armazenados no sessionStorage
+  sessionStorage.removeItem("startTime");
+  sessionStorage.removeItem("miliseconds");
+  sessionStorage.removeItem("seconds");
+  sessionStorage.removeItem("minutes");
+  sessionStorage.removeItem("hours");
 }
 
 function resumeCounter() {
