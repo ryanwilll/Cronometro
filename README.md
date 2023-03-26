@@ -1,6 +1,6 @@
 ﻿<h1 align="center"> Cronômetro </h1>
 
-[image](https://user-images.githubusercontent.com/88680447/227748321-02dd6814-dc7d-455a-97af-c70fe0b836ec.png)
+[!Preview](https://cdn.discordapp.com/attachments/1015396898766590054/1089341687056314529/Screenshot_4.png)
 
 [Clique aqui para acessar](https://ryanwilll.github.io/Cronometro/)
 
